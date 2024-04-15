@@ -195,10 +195,6 @@ def LongestSubstring(x):
          
     return max_length
             
-       
-
-    
-    return setOfString
 
 # Test cases
 test_cases = ["ABCDEFGABEF", "ABCBDEFGH", "AAAAA", "ABCD", ""]
