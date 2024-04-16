@@ -67,3 +67,24 @@ if __name__ == "__main__":
 
     union,intersection = union_Intersection_Hashing(arr1, arr2)
     print(union,intersection)
+
+
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        hashS = dict()
+        hashT = dict()
+
+        for i in s:
+            hashS[i] = hashS.get(i,0)+1
+
+        for i in t:
+            hashT[i] = hashT.get(i,0)+1
+                
+
+        for i in hashT:
+            if hashT[i] > hashS[i] or i not in hashS:
+                return i
+            
+# Test cases
+sol = Solution()
+print(sol.findTheDifference("abcd", "abcde"))  # Output: 'e'
