@@ -236,3 +236,18 @@ def longestPalindrome(x):
 
     return res
 print(f"Longest Palindrome", {longestPalindrome(s)})
+
+# 28. Find the Index of the First Occurrence in a String
+
+def strStr( haystack: str, needle: str) -> int:
+    k = len(needle)
+
+    for right in range(len(haystack)- k + 1):
+        if haystack[right:right+k] == needle:
+            return right
+    
+    return -1
+
+haystack = "sadbutsad"
+needle = "sad"
+print(f"FindIndexOfOccurence", {strStr(haystack,needle)})
