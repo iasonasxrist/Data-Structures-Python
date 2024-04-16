@@ -184,7 +184,7 @@ def LongestSubstring(x):
     max_length = 0
     for right in range(len(x)):
         while x[right] in setOfString:
-
+            print(left)
             if x[right] in setOfString:
                 setOfString.remove(x[left])
                 left+=1
@@ -200,3 +200,39 @@ def LongestSubstring(x):
 test_cases = ["ABCDEFGABEF", "ABCBDEFGH", "AAAAA", "ABCD", ""]
 for x in test_cases:
     print(f"Length of the longest substring without repeating characters in '{x}': {LongestSubstring(x)}")
+
+
+# 5. Longest Palindromic Substring
+
+s="lookkooa"
+
+
+def longestPalindrome(x):
+    res=""
+    count=0
+
+    for i in range(len(x)):
+
+        # odd
+        left, right = i, i
+        while left >= 0 and right<len(x) and x[left] == x[right]:
+                if (right -left + 1) > count:
+                    res = x[left:right+1]
+                    count = right - left + 1
+
+                left -= 1
+                right +=1
+        # even 
+        left, right = i, i + 1 
+        while left >= 0 and right<len(x) and x[left] == x[right]:
+                if (right -left + 1) > count:
+                    res = x[left:right+1]
+                    count = right - left + 1
+
+                left -= 1
+                right += 1
+        
+
+
+    return res
+print(f"Longest Palindrome", {longestPalindrome(s)})
