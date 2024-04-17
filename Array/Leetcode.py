@@ -117,6 +117,7 @@ ok = solution.search([1,1,1,1,1,1,1,1,1,13,1,1,1,1,1,1,1,1,1,1,1,1], 13)
 print("ok",ok) 
 
 
+# Box interview question
 def getSecondLargestNumber(arr):
 
     first ,second = -1 , -1 
@@ -151,6 +152,43 @@ for arr, expected_result in test_cases:
 
 # 229. Majority Element II
 #  find all elements that appear more than ⌊ n/3 ⌋ times.
+
+
+
+def MajorityElement(arr):
+    hashmap = dict()
+
+    if len(arr) < 2 :
+        return arr
+    for i in range(len(arr)):
+        
+        if arr[i] in hashmap:
+            hashmap[arr[i]] +=1
+        else:
+            hashmap[arr[i]] = 1
+    
+    li = []
+
+    for key, value in hashmap.items():
+        if value > len(arr)//3 :
+            li.append(key)
+    
+    return li
+
+# Test cases
+test_cases = [
+    ([3, 2, 3], [3]),                  # 3 is the majority element
+    ([1, 1, 1, 3, 3, 2, 2, 2], [1, 2]), # 1 and 2 are majority elements
+    ([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]), # No majority element
+    ([1], [1]),                         # Single element array
+    ([], [])                            # Empty array
+]
+
+# Run test cases
+for arr, expected_result in test_cases:
+    result = MajorityElement(arr)
+    print(f"Array: {arr}, Majority Elements: {result}, Expected: {expected_result}")
+
 
 
 
