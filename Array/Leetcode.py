@@ -117,4 +117,42 @@ ok = solution.search([1,1,1,1,1,1,1,1,1,13,1,1,1,1,1,1,1,1,1,1,1,1], 13)
 print("ok",ok) 
 
 
+def getSecondLargestNumber(arr):
+
+    first ,second = -1 , -1 
+     
+    if len(arr)< 2 :
+            return None
+    for i in range(len(arr)):
+        
+        if arr[i]> first:
+            second = first
+            first = arr[i]
+        elif arr[i]>second and arr[i]<first:
+            second = arr[i]
+
+    if second == -1:
+        return None
+    return second
+# Test cases
+test_cases = [
+    ([1, 2, 3, 4, 5], 4),      # Second largest is 4
+    ([7, 3, 9, 1, 4], 7),       # Second largest is 7
+    ([1, 1, 1, 1], None),       # All elements are the same, no second largest
+    ([5], None),                # Only one element, no second largest
+    ([], None)                  # Empty array, no second largest
+]
+
+# Run test cases
+for arr, expected_result in test_cases:
+    result = getSecondLargestNumber(arr)
+    print(f"Array: {arr}, Second Largest: {result}, Expected: {expected_result}")
+
+
+# 229. Majority Element II
+#  find all elements that appear more than ⌊ n/3 ⌋ times.
+
+
+
+
 
