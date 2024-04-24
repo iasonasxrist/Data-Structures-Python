@@ -77,4 +77,123 @@ stack = Stack()
 print("Stack based on Array\n")
 stack.testCases()
 
+# Implementation using LinkedList
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class StackLinkedList:
+
+    def __init__(self):
+        self.head = None
+
+
+    def push(self, value):
+
+        if self.head == None:
+            newNode = Node(value)
+            self.head = newNode
+        else:
+            newNode = Node(value)
+            newNode.next = self.head
+            self.head = newNode
+
+
+    def pop(self):
+
+        if not self.isEmpty():
+            poppedNode = self.head
+            self.head = self.head.next 
+            poppedNode.next = None
+            return poppedNode.data
+        else:
+            print("Stack is empty!")
+            return 
+         
+    def peek(self):
+
+        if self.isEmpty():
+            return None
+        
+        else:
+            return self.head.data
+
+    def isEmpty(self):
+      if self.head == None:
+          return True
+      else :
+          return False
+
+    def peek(self):
+        pass
+
+    def display(self):
+
+        iterNode = self.head
+        if self.isEmpty():
+            print("Stack Underflow")
+
+        else:
+
+            while (iterNode != None):
+                print("",iterNode.data)
+                iterNode = iterNode.next 
+                if (iterNode != None):
+                    print(" -> ", end = "")
+
+            return
+
+    def testCases(self):
+            print("Running test cases...\n")
+            
+            # Test case 1: Push elements onto the stack
+            print("Test Case 1: Push elements onto the stack")
+            self.push(11)
+            self.push(22)
+            self.push(33)
+            self.display()
+            
+            # Test case 2: Pop an element from the stack
+            print("\nTest Case 2: Pop an element from the stack")
+            self.pop()
+            self.display()
+            
+            # Test case 3: Peek at the top element of the stack
+            print("\nTest Case 3: Peek at the top element of the stack")
+            top_element = self.peek()
+            print("Top element of the stack:", top_element)
+            
+            # Test case 4: Push more elements to fill the stack to capacity
+            print("\nTest Case 4: Push more elements to fill the stack to capacity")
+            self.push(44)
+            self.push(55)
+            self.push(66)
+            self.push(77)
+            self.display()
+            
+            # Test case 5: Try pushing more elements when the stack is full
+            print("\nTest Case 5: Try pushing more elements when the stack is full")
+            self.push(88)
+            
+            # Test case 6: Pop all elements from the stack
+            print("\nTest Case 6: Pop all elements from the stack")
+            while not self.isEmpty():
+                self.pop()
+                self.display()
+            
+            # Test case 7: Peek when the stack is empty
+            print("\nTest Case 7: Peek when the stack is empty")
+            self.peek()
+            
+            print("\nAll test cases executed.")
+
+stack = StackLinkedList()
+
+print("Stack based on LinkedList\n")
+stack.testCases()
+
+
 
