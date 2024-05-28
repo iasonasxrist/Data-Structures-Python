@@ -192,5 +192,32 @@ for arr, expected_result in test_cases:
 
 
 
+def findPeakElement(nums):
+    left, right = 0, len(nums) - 1
+
+    while left < right:
+        mid = left + (right - left) // 2
+
+        if nums[mid] < nums[mid + 1]:
+            # Peak must be on the right side of mid
+            left = mid + 1
+        else:
+            # Peak must be on the left side of or at mid
+            right = mid
+
+    # At the end of the loop, left and right will converge to the peak element
+    return left
 
 
+# Test cases
+test_cases = [
+    ([1, 2, 3, 1], 2),      # Peak element is 3
+    ([1, 2, 1, 3, 5, 6, 4], 5), # Peak element is 6
+    ([1, 2, 3, 4], 3),      # Peak element is 4
+    ([4, 3, 2, 1], 0)       # Peak element is 4
+]
+
+# Run test cases
+for nums, expected_result in test_cases:
+    result = findPeakElement(nums)
+    print(f"Array: {nums}, Peak Element Index: {result}, Expected Index: {expected_result}")
