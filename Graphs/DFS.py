@@ -12,7 +12,7 @@ class Graph:
     def BFS(self, startFromVertex):
         color = [False ] * len(self.graph)
         distance = [0] * len(self.graph)
-        predecessor = [-1] *len(self.graph)
+        predecessor = [-1] * len(self.graph)
         queue=[startFromVertex]
         color[startFromVertex] = True
 
@@ -27,13 +27,20 @@ class Graph:
                     distance[adj] = distance[s] + 1
                     queue.append(adj)
                     color[adj] = True
+        return predecessor
 
-    def doesPathExists(self, u, v, pred):
-        if  u == v :
+    def doesPathExistsRec(self, u, v, pred):
+        if u == v :
+            print("yes")
             return True
-        if pred[v] is None :
-            return 
-        self.doesPathExists(u, pred[v], pred)
+        if pred[v] == -1:
+            print("nit")
+            return False   
+
+    def doesPathExists(self, u, v):
+        pred =  self.BFS(u)
+        return self.doesPathExistsRec(u, pred[v], pred)
+
 
 
 g = Graph()
@@ -43,5 +50,4 @@ g.addEdge(1, 2)
 g.addEdge(2, 0)
 g.addEdge(2, 3)
 g.addEdge(3, 3)
-pred =  g.BFS(0)
-g.doesPathExists(0, 2, pred)
+g.doesPathExists(0, 2)
